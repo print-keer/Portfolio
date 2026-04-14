@@ -28,17 +28,17 @@ This repository contains the source code for a recruiter-focused portfolio websi
 
 ```text
 Portfolio/
-├─ public/
-│  └─ Keerthi-Manoja-Potluri-Resume.pdf
-├─ src/
-│  ├─ App.jsx
-│  ├─ index.css
-│  ├─ main.jsx
-│  └─ portfolioData.js
-├─ index.html
-├─ package.json
-├─ vite.config.js
-└─ README.md
+|- public/
+|  |- Keerthi-Manoja-Potluri-Resume.pdf
+|- src/
+|  |- App.jsx
+|  |- index.css
+|  |- main.jsx
+|  |- portfolioData.js
+|- index.html
+|- package.json
+|- vite.config.js
+`- README.md
 ```
 
 ## Important Files
