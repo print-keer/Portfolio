@@ -1,5 +1,4 @@
 {
-  // hosting
   "name": "keerthi-portfolio",
   "private": true,
   "homepage": "https://print-keer.github.io/Portfolio",
@@ -26,4 +25,5 @@
     "tailwindcss": "^4.1.7",
     "vite": "^6.3.5"
   }
+  
 }
