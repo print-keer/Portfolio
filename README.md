@@ -126,6 +126,44 @@ Preview the production build locally:
 npm run preview
 ```
 
+## GitHub Pages Deployment
+
+This project is configured for GitHub Pages using Vite and `gh-pages`.
+
+1. Open `package.json` and replace:
+   - `USERNAME` with your GitHub username
+   - `REPO_NAME` with your repository name
+
+2. Open `vite.config.js` and replace:
+   - `REPO_NAME` with your repository name
+
+3. Install deployment dependencies:
+
+```bash
+npm install
+npm install --save-dev gh-pages
+```
+
+4. Deploy to GitHub Pages:
+
+```bash
+npm run deploy
+```
+
+5. On GitHub, go to `Settings` → `Pages`, then select:
+   - Branch: `gh-pages`
+   - Folder: `/ (root)`
+
+6. Visit your site at:
+
+```text
+https://USERNAME.github.io/REPO_NAME
+```
+
+### Fallback support
+
+A `public/404.html` page is included so GitHub Pages can handle unmatched URLs and send visitors back to the homepage.
+
 ## Build Verification
 
 The project has already been verified successfully with:
