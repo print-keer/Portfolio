@@ -1,12 +1,15 @@
 {
   "name": "keerthi-portfolio",
   "private": true,
+  "homepage": "https://print-keer.github.io/Portfolio",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite --configLoader native",
     "build": "vite build",
-    "preview": "vite preview --configLoader native"
+    "preview": "vite preview --configLoader native",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "framer-motion": "^12.10.5",
@@ -18,6 +21,7 @@
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.7",
     "@vitejs/plugin-react": "^4.5.0",
+    "gh-pages": "^5.0.0",
     "tailwindcss": "^4.1.7",
     "vite": "^6.3.5"
   }
