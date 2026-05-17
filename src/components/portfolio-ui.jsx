@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, Github, House, Linkedin, Mail, Moon, Phone, SunMedium } from "lucide-react";
+import { ArrowLeft, ArrowRight, Download, Github, House, Linkedin, Mail, Moon, SunMedium } from "lucide-react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { guidedPages, routeSequence, getStepIndex } from "../site";
 
@@ -34,13 +34,13 @@ const starField = [
 
 export function SectionHeading({ eyebrow, title, description }) {
   return (
-    <div className="max-w-3xl">
-      <p className="text-xs font-semibold uppercase tracking-[0.38em] text-amber-200/70">{eyebrow}</p>
-      <h2 className="mt-4 font-display text-4xl font-semibold leading-none tracking-[0.04em] text-white sm:text-5xl">
+    <div className="portfolio-copy max-w-3xl">
+      <p className="portfolio-eyebrow text-xs font-semibold uppercase tracking-[0.38em] text-amber-200/70">{eyebrow}</p>
+      <h2 className="portfolio-heading mt-4 font-display text-4xl font-semibold leading-none tracking-[0.04em] text-white sm:text-5xl">
         {title}
       </h2>
       {description ? (
-        <p className="mt-5 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">{description}</p>
+        <p className="portfolio-body mt-5 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">{description}</p>
       ) : null}
     </div>
   );
@@ -49,7 +49,7 @@ export function SectionHeading({ eyebrow, title, description }) {
 export function Surface({ children, className = "", bgImage = "", bgPosition = "center" }) {
   return (
     <div
-      className={`relative rounded-[1.75rem] border border-white/8 bg-[linear-gradient(180deg,rgba(10,13,21,0.60),rgba(5,8,16,0.70))] shadow-[0_24px_90px_rgba(0,0,0,0.45)] backdrop-blur-md ${className}`}
+      className={`portfolio-surface relative rounded-[1.75rem] border border-white/8 bg-[linear-gradient(180deg,rgba(10,13,21,0.60),rgba(5,8,16,0.70))] shadow-[0_24px_90px_rgba(0,0,0,0.45)] backdrop-blur-md ${className}`}
     >
       {bgImage ? (
         <div
@@ -87,7 +87,7 @@ export function AppShell({ children, theme, onToggleTheme, contact }) {
   const currentStep = getStepIndex(location.pathname);
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[linear-gradient(180deg,_rgba(2,4,10,0.96)_0%,_rgba(4,7,14,0.98)_100%)] text-slate-100">
+    <div className={`portfolio-shell relative min-h-screen overflow-hidden bg-[linear-gradient(180deg,_rgba(2,4,10,0.96)_0%,_rgba(4,7,14,0.98)_100%)] text-slate-100 ${theme === "dark" ? "theme-dark" : "theme-light"}`}>
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute left-[-8rem] top-[-4rem] h-72 w-72 rounded-full bg-white/5 blur-3xl" />
         <div className="absolute right-[-6rem] top-20 h-80 w-80 rounded-full bg-amber-200/5 blur-3xl" />
@@ -105,10 +105,10 @@ export function AppShell({ children, theme, onToggleTheme, contact }) {
 
       <div className="relative mx-auto flex min-h-screen max-w-7xl flex-col px-5 pb-16 pt-6 sm:px-8 lg:px-10">
         <header className="sticky top-4 z-50 mb-10">
-          <div className="mx-auto flex max-w-6xl items-center justify-between rounded-full border border-white/10 bg-black/35 px-4 py-3 shadow-[0_10px_40px_rgba(0,0,0,0.35)] backdrop-blur-2xl">
+          <div className="portfolio-header mx-auto flex max-w-6xl items-center justify-between rounded-full border border-white/10 bg-black/35 px-4 py-3 shadow-[0_10px_40px_rgba(0,0,0,0.35)] backdrop-blur-2xl">
             <Link to="/" className="min-w-0">
-              <p className="font-display text-xs uppercase tracking-[0.38em] text-amber-200/65">Portfolio</p>
-              <p className="truncate font-display text-xl font-semibold tracking-[0.08em] text-white">
+              <p className="portfolio-eyebrow font-display text-xs uppercase tracking-[0.38em] text-amber-200/65">Portfolio</p>
+              <p className="portfolio-heading truncate font-display text-xl font-semibold tracking-[0.08em] text-white">
                 Keerthi Manoja
               </p>
             </Link>
@@ -121,8 +121,8 @@ export function AppShell({ children, theme, onToggleTheme, contact }) {
                   className={({ isActive }) =>
                     `rounded-full px-3 py-2 text-sm transition ${
                       isActive
-                        ? "border border-amber-200/25 bg-white/8 text-white"
-                        : "text-slate-300 hover:text-white"
+                        ? "portfolio-nav-active border border-amber-200/25 bg-white/8 text-white"
+                        : "portfolio-nav text-slate-300 hover:text-white"
                     }`
                   }
                 >
@@ -133,11 +133,21 @@ export function AppShell({ children, theme, onToggleTheme, contact }) {
 
             <div className="flex items-center gap-2">
               <a
+                href="/Keerthi-Manoja-Potluri-Resume.pdf"
+                download="Keerthi Potluri Resume.pdf"
+                className="portfolio-icon-link hidden h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-200 transition hover:border-amber-200/35 hover:text-white sm:inline-flex"
+                aria-label="Download Resume"
+                title="Download resume"
+              >
+                <Download size={16} />
+              </a>
+              <a
                 href={contact.github !== "ADD_LINK" ? contact.github : "#"}
                 target="_blank"
                 rel="noreferrer"
-                className="hidden h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-200 transition hover:border-amber-200/35 hover:text-white sm:inline-flex"
+                className="portfolio-icon-link hidden h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-200 transition hover:border-amber-200/35 hover:text-white sm:inline-flex"
                 aria-label="GitHub"
+                title="Open GitHub profile"
               >
                 <Github size={16} />
               </a>
@@ -145,16 +155,18 @@ export function AppShell({ children, theme, onToggleTheme, contact }) {
                 href={contact.linkedin !== "ADD_LINK" ? contact.linkedin : "#"}
                 target="_blank"
                 rel="noreferrer"
-                className="hidden h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-200 transition hover:border-amber-200/35 hover:text-white sm:inline-flex"
+                className="portfolio-icon-link hidden h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-200 transition hover:border-amber-200/35 hover:text-white sm:inline-flex"
                 aria-label="LinkedIn"
+                title="Open LinkedIn profile"
               >
                 <Linkedin size={16} />
               </a>
               <button
                 type="button"
                 onClick={onToggleTheme}
-                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-200 transition hover:border-amber-200/40 hover:text-white"
+                className="portfolio-icon-link inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-200 transition hover:border-amber-200/40 hover:text-white"
                 aria-label="Toggle theme"
+                title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
               >
                 {theme === "dark" ? <SunMedium size={18} /> : <Moon size={18} />}
               </button>
@@ -247,21 +259,7 @@ export function ContactCards({ contact }) {
         <ArrowRight size={18} className="text-slate-400" />
       </a>
 
-      <a
-        href={`tel:${contact.phone.replace(/\s+/g, "")}`}
-        className="flex items-center justify-between rounded-[1.5rem] border border-white/10 bg-white/5 p-5 transition hover:border-amber-200/35"
-      >
-        <div className="flex items-center gap-3">
-          <Phone className="text-amber-100" />
-          <div>
-            <p className="text-xs uppercase tracking-[0.24em] text-slate-400">Phone</p>
-            <p className="mt-1 text-sm text-slate-100">{contact.phone}</p>
-          </div>
-        </div>
-        <ArrowRight size={18} className="text-slate-400" />
-      </a>
-
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-4 sm:grid-cols-3">
         <a
           href={contact.github !== "ADD_LINK" ? contact.github : "#"}
           target="_blank"
@@ -288,6 +286,17 @@ export function ContactCards({ contact }) {
             <p className="text-xs text-slate-400">
               {contact.linkedin !== "ADD_LINK" ? "Open profile" : "Add link in data file"}
             </p>
+          </div>
+        </a>
+        <a
+          href="/Keerthi-Manoja-Potluri-Resume.pdf"
+          download="Keerthi Potluri Resume.pdf"
+          className="flex items-center gap-3 rounded-[1.5rem] border border-white/10 bg-white/5 p-5 transition hover:border-amber-200/35"
+        >
+          <Download className="text-white" />
+          <div>
+            <p className="text-sm font-medium text-white">Resume</p>
+            <p className="text-xs text-slate-400">Download PDF</p>
           </div>
         </a>
       </div>

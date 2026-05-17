@@ -12,6 +12,10 @@
   color-scheme: dark;
 }
 
+:root:not(.dark) {
+  color-scheme: light;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -67,4 +71,84 @@ body::after {
     radial-gradient(circle at 82% 16%, rgba(255, 255, 255, 0.05), transparent 18%);
   pointer-events: none;
   z-index: -1;
+}
+
+:root:not(.dark) body {
+  background: #f5f1e8;
+}
+
+:root:not(.dark) body::before {
+  background:
+    linear-gradient(180deg, rgba(244, 240, 232, 0.88), rgba(236, 229, 217, 0.92)),
+    url("/space-texture.jpeg") center/cover no-repeat;
+  opacity: 0.62;
+}
+
+:root:not(.dark) body::after {
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.65), transparent 26%),
+    radial-gradient(circle at 18% 30%, rgba(217, 179, 103, 0.16), transparent 22%),
+    radial-gradient(circle at 82% 16%, rgba(255, 255, 255, 0.4), transparent 18%);
+}
+
+.theme-light {
+  color: #1f2937;
+}
+
+.theme-light .portfolio-surface {
+  border-color: rgba(15, 23, 42, 0.08) !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.62), rgba(248, 245, 238, 0.84)) !important;
+  box-shadow: 0 24px 90px rgba(15, 23, 42, 0.12) !important;
+}
+
+.theme-light .portfolio-header {
+  border-color: rgba(15, 23, 42, 0.1) !important;
+  background: rgba(255, 255, 255, 0.68) !important;
+  box-shadow: 0 10px 40px rgba(15, 23, 42, 0.08) !important;
+}
+
+.theme-light .portfolio-heading,
+.theme-light .text-white,
+.theme-light .text-stone-100 {
+  color: #111827 !important;
+}
+
+.theme-light .portfolio-body,
+.theme-light .text-slate-300,
+.theme-light .text-slate-200,
+.theme-light .text-slate-100 {
+  color: #1f2937 !important;
+}
+
+.theme-light .text-slate-400 {
+  color: #475569 !important;
+}
+
+.theme-light .portfolio-eyebrow,
+.theme-light .text-amber-100,
+.theme-light .text-amber-200\/70,
+.theme-light .text-amber-200\/65,
+.theme-light .text-amber-200\/80,
+.theme-light .text-amber-50 {
+  color: #8a6720 !important;
+}
+
+.theme-light .bg-white\/5,
+.theme-light .bg-white\/8,
+.theme-light .bg-black\/20,
+.theme-light .bg-black\/25,
+.theme-light .bg-black\/35,
+.theme-light .bg-slate-950\/35 {
+  background-color: rgba(255, 255, 255, 0.55) !important;
+}
+
+.theme-light .border-white\/8,
+.theme-light .border-white\/10 {
+  border-color: rgba(15, 23, 42, 0.08) !important;
+}
+
+.theme-light .portfolio-icon-link,
+.theme-light .portfolio-nav,
+.theme-light .portfolio-nav-active {
+  color: #1f2937 !important;
 }
