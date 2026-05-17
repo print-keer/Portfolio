@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, Download, Github, House, Linkedin, Mail, Moon, SunMedium } from "lucide-react";
+import { ArrowLeft, ArrowRight, Download, Github, House, Linkedin, Mail } from "lucide-react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { guidedPages, routeSequence, getStepIndex } from "../site";
 
@@ -82,12 +82,12 @@ export function PageFrame({ children, className = "" }) {
   );
 }
 
-export function AppShell({ children, theme, onToggleTheme, contact }) {
+export function AppShell({ children, contact }) {
   const location = useLocation();
   const currentStep = getStepIndex(location.pathname);
 
   return (
-    <div className={`portfolio-shell relative min-h-screen overflow-hidden bg-[linear-gradient(180deg,_rgba(2,4,10,0.96)_0%,_rgba(4,7,14,0.98)_100%)] text-slate-100 ${theme === "dark" ? "theme-dark" : "theme-light"}`}>
+    <div className="portfolio-shell theme-dark relative min-h-screen overflow-hidden bg-[linear-gradient(180deg,_rgba(2,4,10,0.96)_0%,_rgba(4,7,14,0.98)_100%)] text-slate-100">
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute left-[-8rem] top-[-4rem] h-72 w-72 rounded-full bg-white/5 blur-3xl" />
         <div className="absolute right-[-6rem] top-20 h-80 w-80 rounded-full bg-amber-200/5 blur-3xl" />
@@ -161,15 +161,6 @@ export function AppShell({ children, theme, onToggleTheme, contact }) {
               >
                 <Linkedin size={16} />
               </a>
-              <button
-                type="button"
-                onClick={onToggleTheme}
-                className="portfolio-icon-link inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-200 transition hover:border-amber-200/40 hover:text-white"
-                aria-label="Toggle theme"
-                title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-              >
-                {theme === "dark" ? <SunMedium size={18} /> : <Moon size={18} />}
-              </button>
             </div>
           </div>
         </header>

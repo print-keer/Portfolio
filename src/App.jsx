@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import { Navigate, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { AppShell } from "./components/portfolio-ui";
@@ -15,15 +15,10 @@ import { routeSequence } from "./site";
 function AppRoutes() {
   const location = useLocation();
   const navigate = useNavigate();
-  const [theme, setTheme] = useState(() => {
-    const storedTheme = window.localStorage.getItem("theme");
-    return storedTheme || "dark";
-  });
 
   useEffect(() => {
-    document.documentElement.classList.toggle("dark", theme === "dark");
-    window.localStorage.setItem("theme", theme);
-  }, [theme]);
+    document.documentElement.classList.add("dark");
+  }, []);
 
   useEffect(() => {
     const handleKeydown = (event) => {
@@ -52,10 +47,8 @@ function AppRoutes() {
     return () => window.removeEventListener("keydown", handleKeydown);
   }, [location.pathname, navigate]);
 
-  const toggleTheme = () => setTheme((current) => (current === "dark" ? "light" : "dark"));
-
   return (
-    <AppShell theme={theme} onToggleTheme={toggleTheme} contact={portfolioData.contact}>
+    <AppShell contact={portfolioData.contact}>
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<HomePage />} />
