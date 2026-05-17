@@ -9,7 +9,7 @@
     "build": "vite build",
     "preview": "vite preview --configLoader native",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist -r https://github.com/print-keer/Portfolio.git"
   },
   "dependencies": {
     "framer-motion": "^12.10.5",
